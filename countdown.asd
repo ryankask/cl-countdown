@@ -2,7 +2,7 @@
 
 (asdf:defsystem #:countdown
   :serial t
-  :description "Show nearby bus information."
+  :description "Displays upcoming London bus arrivals for a particular stop."
   :author "Ryan Kaskel <dev@ryankaskel.com>"
   :license "BSD"
   :depends-on (#:drakma #:cl-json #:cl-ppcre)
