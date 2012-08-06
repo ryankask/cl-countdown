@@ -16,13 +16,13 @@
   "The TfL's API doesn't return real JSON for 'performance' reasons. We trim the response, turn it into legal JSON, then parse it."
   (decode-json-from-string
    (format nil "[~{~a~^, ~}]"
-           (cdr (split-sequence #\Newline (make-tfl-request *my-stop-id*))))))
+           (rest (split-sequence #\Newline (make-tfl-request *my-stop-id*))))))
 
 (defun parse-tfl-response (response)
   (let ((upcoming-arrivals nil)
         (now (get-unix-time)))
     (dolist (arrival (parse-tfl-json response))
-      (let* ((modified-arrival (cdr arrival))
+      (let* ((modified-arrival (rest arrival))
              (expected-time (fourth modified-arrival)))
         (setf (fourth modified-arrival) (/ (- (/ expected-time 1000) now) 60))
         (push modified-arrival upcoming-arrivals)))
