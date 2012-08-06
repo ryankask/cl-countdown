@@ -16,7 +16,7 @@
   "The TfL's API doesn't return real JSON for 'performance' reasons. We trim the response, turn it into legal JSON, then parse it."
   (decode-json-from-string
    (format nil "[~{~a~^, ~}]"
-           (cdr (split "\\n" (make-tfl-request *my-stop-id*))))))
+           (cdr (split-sequence #\Newline (make-tfl-request *my-stop-id*))))))
 
 (defun parse-tfl-response (response)
   (let ((upcoming-arrivals nil)

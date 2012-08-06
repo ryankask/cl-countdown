@@ -5,7 +5,7 @@
   :description "Displays upcoming London bus arrivals for a particular stop."
   :author "Ryan Kaskel <dev@ryankaskel.com>"
   :license "BSD"
-  :depends-on (#:drakma #:cl-json #:cl-ppcre)
+  :depends-on (#:drakma #:cl-json #:split-sequence)
   :components ((:file "package")
                (:file "datetime")
                (:file "countdown")))
